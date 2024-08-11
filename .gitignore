@@ -44,7 +44,7 @@ Thumbs.db
 .eslintcache
 
 # dotenv environment variables file
-.env
+#.env
 
 # MongoDB data
 data/
