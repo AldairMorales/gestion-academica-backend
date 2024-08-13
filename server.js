@@ -20,6 +20,8 @@ app.use(bodyParser.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/courses', require('./routes/courses'));
+app.use('/api/docentes', require('./routes/docentes'));
+app.use('/api/estudiantes', require('./routes/estudiantes'));
 app.use('/api/notices', require('./routes/notices'));
 app.use('/api/enrollments', require('./routes/enrollments'));
 

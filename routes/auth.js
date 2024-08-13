@@ -6,7 +6,7 @@ const User = require('../models/user');
 
 // Registro
 router.post('/register', async (req, res) => {
-  const { userName, password } = req.body;
+  const { userName, password, role } = req.body;
 
   try {
     const user = await User.findOne({ userName });
@@ -14,7 +14,7 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ msg: 'El usuario ya existe' });
     }
 
-    const newUser = new User({ userName, password });
+    const newUser = new User({ userName, password, role });
 
     const salt = await bcrypt.genSalt(10);
     newUser.password = await bcrypt.hash(password, salt);
@@ -44,7 +44,8 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, 'secreto', { expiresIn: '1h' });
-    res.json({ token });
+    const role = user.role;
+    res.json({ role, token });
   } catch (err) {
     res.status(500).json({ msg: 'Error en el servidor' });
   }

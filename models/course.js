@@ -5,7 +5,7 @@ const CourseSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String },
   schedule: { type: String, required: true },
-  teacher: { type: Schema.Types.ObjectId, ref: 'User' }, // Referencia al profesor asignado
+  teacher: { type: String, required: true  }, // Referencia al profesor asignado
   students: [{ type: Schema.Types.ObjectId, ref: 'User' }], // Lista de estudiantes inscritos
   notices: [{ type: Schema.Types.ObjectId, ref: 'Notice' }], // Lista de avisos
   grades: [{
